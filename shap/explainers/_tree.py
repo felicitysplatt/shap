@@ -524,6 +524,10 @@ class Tree(Explainer):
     def assert_additivity(self, phi, model_output):
 
         def check_sum(sum_val, model_output):
+            
+            print("Additivity difference: " + str(diff))
+            print("Relative additivity difference: " + str(np.max(diff / (np.abs(sum_val) + 1e-2))))
+            
             diff = np.abs(sum_val - model_output)
             if np.max(diff / (np.abs(sum_val) + 1e-2)) > 1e-2:
                 ind = np.argmax(diff)
